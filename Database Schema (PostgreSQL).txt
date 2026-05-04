@@ -1,0 +1,65 @@
+┌─────────────────────────────────────────────────────────────────┐
+│                          USERS & AUTH                           │
+├─────────────────────────────────────────────────────────────────┤
+│ User (1 per registration)                                       │
+│  - id, email (unique), password_hash, created_at               │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                       LEARNING CONTENT                          │
+├─────────────────────────────────────────────────────────────────┤
+│ Syllabus (1 per course)                                         │
+│  - id, owner_email, title, raw_text, created_at               │
+│       ↓                                                          │
+│ Topic (Multiple per syllabus)                                   │
+│  - id, syllabus_id, name, order                                │
+│       ↓                                                          │
+│ SyllabusPlaylist (YouTube links)                               │
+│  - id, syllabus_id, playlist_id, playlist_url                 │
+│       ↓                                                          │
+│ VideoSummary (AI-generated)                                     │
+│  - id, syllabus_id, video_id, video_title, transcript, summary │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                      LEARNING TRACKING                          │
+├─────────────────────────────────────────────────────────────────┤
+│ VideoAssessment (AI-generated MCQs)                             │
+│  - id, syllabus_id, video_id, question, options[A-D], correct  │
+│       ↓                                                          │
+│ AssessmentSubmission (User answers)                            │
+│  - id, user_email, syllabus_id, video_id, selected_option,    │
+│    is_correct, submitted_at                                    │
+│       ↓                                                          │
+│ TopicPerformance (Mastery tracking)                            │
+│  - id, user_email, syllabus_id, topic_name, total_questions,  │
+│    correct_answers, mastery_percentage, mastery_level          │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                    SPACED REPETITION (SRS)                      │
+├─────────────────────────────────────────────────────────────────┤
+│ SRSCard (SM-2 state per topic)                                  │
+│  - id, user_email, syllabus_id, topic_name, srs_n, srs_ef,    │
+│    srs_interval, srs_next_review, total_reviews, total_correct │
+│       ↓                                                          │
+│ SRSReview (Audit log of each review)                           │
+│  - id, card_id, quality, ef_before/after, interval_before/after│
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                      STUDY PLANNING                             │
+├─────────────────────────────────────────────────────────────────┤
+│ StudyPlan (AI-generated schedules)                              │
+│  - id, user_email, syllabus_id, title, summary, end_date       │
+│       ↓                                                          │
+│ StudyPlanItem (Individual tasks)                               │
+│  - id, study_plan_id, topic_name, day_assigned, priority, ...  │
+│       ↓                                                          │
+│ StudyPlanProgress (Track completion)                           │
+│  - id, study_plan_id, item_id, status, completed_at            │
+└─────────────────────────────────────────────────────────────────┘

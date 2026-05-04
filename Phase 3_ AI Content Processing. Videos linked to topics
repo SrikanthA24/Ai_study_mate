@@ -1,0 +1,10 @@
+1. Videos linked to topics
+   ↓
+2. System processes each video:
+   ├─ Extract transcript (YouTube API)
+   ├─ Generate summary (OpenAI/Groq)
+   ├─ Generate 4 MCQ questions (OpenAI/Groq)
+   ↓
+3. Store in VideoSummary & VideoAssessment tables
+   ↓
+4. User sees summary + questions on /playlist-videos

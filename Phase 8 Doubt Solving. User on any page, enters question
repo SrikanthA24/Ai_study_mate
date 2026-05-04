@@ -1,0 +1,11 @@
+1. User on any page, enters question
+   ↓
+2. Frontend: POST /api/doubt-solver/ask {question}
+   ↓
+3. Backend: Send to OpenAI/Groq with context
+   ↓
+4. AI generates answer + explanation
+   ↓
+5. Return to user
+   ↓
+6. User reads answer + continues studying

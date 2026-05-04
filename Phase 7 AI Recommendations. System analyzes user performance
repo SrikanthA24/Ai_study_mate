@@ -1,0 +1,13 @@
+1. System analyzes user performance
+   ↓
+2. Backend: GET /api/recommendation/next-topic
+   ↓
+3. AI logic determines:
+   ├─ Topics with lowest mastery_percentage
+   ├─ Topics due for SRS review
+   ├─ Topic dependencies
+   ├─ Time available today
+   ↓
+4. Return recommended topic
+   ↓
+5. Show on dashboard as "Next: Study Derivatives"

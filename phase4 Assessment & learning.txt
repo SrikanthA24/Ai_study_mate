@@ -1,0 +1,16 @@
+1. User navigates to /assessment/:id
+   ↓
+2. System loads VideoAssessment MCQs
+   ↓
+3. User answers questions
+   ↓
+4. Frontend: POST /api/assessment/submit {answers}
+   ↓
+5. Backend: Grade answers → Update TopicPerformance
+   ├─ Calculate mastery_percentage
+   ├─ Determine mastery_level
+   ├─ Flag if needs_revision
+   ↓
+6. Return score + feedback
+   ↓
+7. Show performance on /performance page

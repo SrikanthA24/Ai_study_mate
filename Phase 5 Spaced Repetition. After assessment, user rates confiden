@@ -1,0 +1,25 @@
+1. After assessment, user rates confidence (0-5)
+   ↓
+2. Frontend: POST /api/srs/review {topic_name, quality}
+   ↓
+3. Backend SM-2 Algorithm:
+   ├─ Find or create SRSCard
+   ├─ Calculate new srs_n, srs_ef, srs_interval
+   ├─ Set srs_next_review date
+   ├─ Log review in SRSReview (audit trail)
+   ↓
+4. Return next review date
+   ↓
+5. Topic scheduled for future review
+
+══════════════════════════════════════
+
+1. Next day (or after srs_interval days)
+   ↓
+2. User checks /srs/due?syllabus_id=5
+   ↓
+3. Backend queries: srs_next_review <= TODAY
+   ↓
+4. Returns due topics in priority order
+   ↓
+5. User can review topics again

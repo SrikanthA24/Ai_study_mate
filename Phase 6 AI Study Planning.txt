@@ -1,0 +1,18 @@
+1. User on /study-plan/generate
+   ↓
+2. Enters: end_date, hours_per_day, topics
+   ↓
+3. Frontend: POST /api/study-plan/generate {end_date, hours_per_day}
+   ↓
+4. Backend AI logic:
+   ├─ Analyze topic complexity
+   ├─ Calculate time per topic (video duration + practice)
+   ├─ Distribute across available days
+   ├─ Prioritize weak topics (low mastery %)
+   ├─ Create StudyPlan + StudyPlanItems
+   ↓
+5. Return schedule
+   ↓
+6. Show on /study-plan page with daily breakdown
+   ↓
+7. User can track progress on /study-plan-progress

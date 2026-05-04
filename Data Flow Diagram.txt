@@ -1,0 +1,28 @@
+┌──────────────┐
+│   Browser    │
+│  (React App) │
+└──────┬───────┘
+       │ HTTP/JSON
+       │ Port 5173
+       ↓
+┌──────────────────────────┐
+│    FastAPI Backend       │
+│   (Port 8000)            │
+├──────────────────────────┤
+│ ├─ Auth Router           │
+│ ├─ Syllabus Router       │ ────→ PostgreSQL
+│ ├─ Assessment Router     │       Database
+│ ├─ SRS Router            │
+│ ├─ Study Plan Router     │
+│ └─ ... (9 more routers)  │
+└──────────┬───────────────┘
+           │
+    ┌──────┴──────┬──────────────┐
+    ↓             ↓              ↓
+ OpenAI/Groq  YouTube API   PostgreSQL
+ (AI Services) (Transcripts) (Storage)
+ - Summaries   - Metadata
+ - MCQs        - Videos
+ - Doubts
+ - Plans
+ - Recs

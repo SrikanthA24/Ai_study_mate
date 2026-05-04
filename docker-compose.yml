@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    container_name: asm_db
+    environment:
+      POSTGRES_USER: asm
+      POSTGRES_PASSWORD: asm
+      POSTGRES_DB: ai_study_mate
+    ports:
+      - "5432:5432"
+    volumes:
+      - asm_pgdata:/var/lib/postgresql/data
+volumes:
+  asm_pgdata:

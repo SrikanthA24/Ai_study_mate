@@ -1,0 +1,29 @@
+1. User navigates to /syllabus/create
+   ↓
+2. Pastes raw course material (text)
+   ↓
+3. Frontend: POST /api/syllabus/create {title, raw_text}
+   ↓
+4. Backend AI: Parse topics using regex/OpenAI
+   ↓
+5. Create Syllabus + Topics in DB
+   ↓
+6. Return created syllabus → Redirect to /syllabus/:id
+   ↓
+7. User sees topic list → Clicks "Link YouTube"
+
+══════════════════════════════════════
+
+1. User on /syllabus/:id/playlist
+   ↓
+2. Searches YouTube playlists
+   ↓
+3. Frontend: POST /api/youtube/add-playlist {playlist_url}
+   ↓
+4. Backend: Extract playlist_id + video IDs
+   ↓
+5. Fetch video metadata (title, duration)
+   ↓
+6. Store in SyllabusPlaylist table
+   ↓
+7. Show videos on /syllabus/:id/videos

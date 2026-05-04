@@ -1,0 +1,40 @@
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FRONTEND LAYER (React)                       │
+│  ┌──────────────────────────────────────────────────────────────┐  │
+│  │  Pages (15+) → Components → API Client → Local Storage      │  │
+│  │  Routing: React Router v7 | Styling: Tailwind CSS           │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │ HTTP/JSON (Axios)
+                             │ Port: 5173 (Vite Dev Server)
+                             ↓
+┌─────────────────────────────────────────────────────────────────────┐
+│                    API GATEWAY LAYER (FastAPI)                      │
+│  ┌──────────────────────────────────────────────────────────────┐  │
+│  │  CORS Middleware → Request Validation → Authentication       │  │
+│  │  11 Router Modules | Async Processing                        │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+│                             │                                        │
+│  ┌────────────────────┬────┴────────┬──────────────┬─────────────┐ │
+│  │ Auth Router        │ Syllabus    │ Assessment   │ Performance │ │
+│  │ SRS Router         │ Router      │ Router       │ Router      │ │
+│  │ Study Plan Router  │ YouTube     │ Doubt Solver │ Recommend.  │ │
+│  │ Progress Router    │ Router      │ Router       │ Router      │ │
+│  └────────────────────┴─────────────┴──────────────┴─────────────┘ │
+│                             │                                        │
+└─────────────────────────────┼────────────────────────────────────────┘
+                              │
+                ┌─────────────┼─────────────┐
+                ↓             ↓             ↓
+        ┌──────────────┐  ┌────────────┐  ┌──────────────┐
+        │ PostgreSQL   │  │ OpenAI/    │  │ YouTube      │
+        │ Database     │  │ Groq APIs  │  │ Transcript   │
+        │ (SQLModel)   │  │ (AI)       │  │ API          │
+        │              │  │            │  │              │
+        │ - Users      │  │ - Summaries│  │ - Transcripts│
+        │ - Syllabi    │  │ - MCQs     │  │ - Metadata   │
+        │ - Topics     │  │ - Doubts   │  │              │
+        │ - SRS Cards  │  │ - Plans    │  │              │
+        │ - Progress   │  │ - Recs     │  │              │
+        │ - Assessment │  │            │  │              │
+        └──────────────┘  └────────────┘  └──────────────┘

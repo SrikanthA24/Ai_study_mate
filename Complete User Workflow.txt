@@ -1,0 +1,25 @@
+1. User visits /register
+   ↓
+2. Enters email & password
+   ↓
+3. Frontend: POST /api/auth/register {email, password}
+   ↓
+4. Backend: Hash password (bcrypt 12-rounds)
+   ↓
+5. Store User in DB
+   ↓
+6. Return User ID & redirect to login
+
+══════════════════════════════════════
+
+1. User visits / (login page)
+   ↓
+2. Enters credentials
+   ↓
+3. Frontend: POST /api/auth/login {email, password}
+   ↓
+4. Backend: Verify password → Create JWT token
+   ↓
+5. Return token → Store in localStorage
+   ↓
+6. Redirect to /dashboard
